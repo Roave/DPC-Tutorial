@@ -27,4 +27,19 @@ class BlogController extends AbstractActionController
             ]
         );
     }
+
+    public function postAction()
+    {
+        $slug = $this->params()->fromRoute('slug');
+        $post = $this->postService->getPostBySlug($slug);
+        if (!$post) {
+            $this->getResponse()->setStatusCode(404);
+            return false;
+        }
+        return new ViewModel(
+            [
+                'post' => $post
+            ]
+        );
+    }
 }

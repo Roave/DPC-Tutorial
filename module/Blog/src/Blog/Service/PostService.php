@@ -27,10 +27,23 @@ class PostService
     {
         $sql = $this->postTable->getSql()->select()
             ->order('written_on DESC');
-        if($limit) {
+        if ($limit) {
             $sql->limit($limit);
         }
 
         return $this->postTable->selectWith($sql);
     }
-} 
+
+    /**
+     * @param $slug
+     * @return array|\ArrayObject|null
+     */
+    public function getPostBySlug($slug)
+    {
+        return $this->postTable->select(
+            [
+                'slug' => $slug
+            ]
+        )->current();
+    }
+}

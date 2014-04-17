@@ -1,0 +1,10 @@
+<?php
+/** @var \Blog\Entity\Post $post */
+?>
+<h1>Blog</h1>
+
+<hr />
+<h1><?php echo $this->escapeHtml($post->getTitle()); ?></h1>
+<h2><?php echo $this->escapeHtml($post->getWrittenOn()); ?></h2>
+<h3><?php echo $this->escapeHtml($post->getPreview()); ?></h3>
+<p><?php echo nl2br($this->escapeHtml($post->getBody())); ?></p>
