@@ -21,7 +21,7 @@ return array(
                 ),
             ),
             'post' => [
-                'type' => 'Literal',
+                'type' => 'Segment',
                 'options' => [
                     'route' => '/blog/:slug',
                     'defaults' => [

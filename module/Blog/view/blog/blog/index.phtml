@@ -5,9 +5,11 @@
 
 <h2>Latest Posts</h2>
 
-<?php foreach($posts as $post): ?>
-    <hr />
-    <h1><?php echo $post->getTitle(); ?></h1>
+<?php foreach ($posts as $post): ?>
+    <hr/>
+    <a href="<?php echo $this->url('post', ['slug' => $post->getSlug()]); ?>">
+        <h1><?php echo $post->getTitle(); ?></h1>
+    </a>
     <h3><?php echo $post->getWrittenOn(); ?></h3>
     <p><?php echo $post->getPreview(); ?></p>
 <?php endforeach; ?>
