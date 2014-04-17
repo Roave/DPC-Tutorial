@@ -26,9 +26,7 @@ return array(
 
     ),
     'controllers' => array(
-        'invokables' => array(
-            'Blog\Controller\Blog' => 'Blog\Controller\BlogController'
-        ),
+
     ),
     'view_manager' => array(
         'display_not_found_reason' => true,

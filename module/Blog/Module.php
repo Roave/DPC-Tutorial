@@ -9,10 +9,12 @@
 
 namespace Blog;
 
+use Blog\Controller\BlogController;
 use Blog\Entity\Post;
 use Blog\Service\PostService;
 use Zend\Db\ResultSet\HydratingResultSet;
 use Zend\Db\TableGateway\TableGateway;
+use Zend\Mvc\Controller\ControllerManager;
 use Zend\Mvc\MvcEvent;
 use Zend\ServiceManager\ServiceManager;
 use Zend\Stdlib\Hydrator\ClassMethods;
@@ -37,6 +39,19 @@ class Module
                 ),
             ),
         );
+    }
+
+
+    public function getControllerConfig()
+    {
+        return [
+            'factories' => [
+                'Blog\Controller\Blog' => function(ControllerManager $controllerManager) {
+                    $postService = $controllerManager->getServiceLocator()->get('Blog\Service\PostService');
+                    return new BlogController($postService);
+                }
+            ],
+        ];
     }
 
     public function getServiceConfig()

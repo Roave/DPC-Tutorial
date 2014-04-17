@@ -17,5 +17,4 @@ class PostService
         $this->postTable = $postTable;
     }
 
-
 } 
