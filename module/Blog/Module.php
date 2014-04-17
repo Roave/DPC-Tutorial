@@ -9,8 +9,12 @@
 
 namespace Blog;
 
-use Zend\Mvc\ModuleRouteListener;
+use Blog\Entity\Post;
+use Zend\Db\ResultSet\HydratingResultSet;
+use Zend\Db\TableGateway\TableGateway;
 use Zend\Mvc\MvcEvent;
+use Zend\ServiceManager\ServiceManager;
+use Zend\Stdlib\Hydrator\ClassMethods;
 
 class Module
 {
@@ -32,5 +36,21 @@ class Module
                 ),
             ),
         );
+    }
+
+    public function getServiceConfig()
+    {
+        return [
+            'factories' => [
+                'PostTableGateway' => function (ServiceManager $serviceManager) {
+                    $adapter = $serviceManager->get('Zend\Db\Adapter\Adapter');
+                    $hydrator           = new ClassMethods(true);
+                    $rowObjectPrototype = new Post();
+                    $resultSet          = new HydratingResultSet($hydrator, $rowObjectPrototype);
+                    $tableGateway       = new TableGateway('post', $adapter, null, $resultSet);
+                    return $tableGateway;
+                }
+            ],
+        ];
     }
 }
