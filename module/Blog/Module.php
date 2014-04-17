@@ -10,6 +10,7 @@
 namespace Blog;
 
 use Blog\Entity\Post;
+use Blog\Service\PostService;
 use Zend\Db\ResultSet\HydratingResultSet;
 use Zend\Db\TableGateway\TableGateway;
 use Zend\Mvc\MvcEvent;
@@ -49,7 +50,11 @@ class Module
                     $resultSet          = new HydratingResultSet($hydrator, $rowObjectPrototype);
                     $tableGateway       = new TableGateway('post', $adapter, null, $resultSet);
                     return $tableGateway;
-                }
+                },
+                'Blog\Service\PostService' => function(ServiceManager $serviceManager) {
+                    $postTable = $serviceManager->get('PostTableGateway');
+                    return new PostService($postTable);
+                },
             ],
         ];
     }
