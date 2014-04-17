@@ -20,14 +20,20 @@ return array(
                     ),
                 ),
             ),
+            'post' => [
+                'type' => 'Literal',
+                'options' => [
+                    'route' => '/blog/:slug',
+                    'defaults' => [
+                        'controller' => 'Blog\Controller\Blog',
+                        'action' => 'post',
+                    ],
+                ],
+            ],
         ),
     ),
-    'service_manager' => array(
-
-    ),
-    'controllers' => array(
-
-    ),
+    'service_manager' => array(),
+    'controllers' => array(),
     'view_manager' => array(
         'display_not_found_reason' => true,
         'display_exceptions' => true,
