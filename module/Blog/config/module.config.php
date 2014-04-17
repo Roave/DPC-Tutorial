@@ -30,6 +30,16 @@ return array(
                     ],
                 ],
             ],
+            'admin' => [
+                'type' => 'Literal',
+                'options' => [
+                    'route' => '/blog/admin',
+                    'defaults' => [
+                        'controller' => 'Blog\Controller\Admin',
+                        'action' => 'index',
+                    ],
+                ],
+            ],
         ),
     ),
     'service_manager' => array(),

@@ -10,6 +10,7 @@
 namespace Blog;
 
 use Blog\Controller\BlogController;
+use Blog\Controller\AdminController;
 use Blog\Entity\Post;
 use Blog\Service\PostService;
 use Zend\Db\ResultSet\HydratingResultSet;
@@ -49,6 +50,10 @@ class Module
                 'Blog\Controller\Blog' => function(ControllerManager $controllerManager) {
                     $postService = $controllerManager->getServiceLocator()->get('Blog\Service\PostService');
                     return new BlogController($postService);
+                },
+                'Blog\Controller\Admin' => function(ControllerManager $controllerManager) {
+                    $postService = $controllerManager->getServiceLocator()->get('Blog\Service\PostService');
+                    return new AdminController($postService);
                 }
             ],
         ];

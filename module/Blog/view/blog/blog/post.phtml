@@ -6,5 +6,6 @@
 <hr />
 <h1><?php echo $this->escapeHtml($post->getTitle()); ?></h1>
 <h2><?php echo $this->escapeHtml($post->getWrittenOn()); ?></h2>
-<h3><?php echo $this->escapeHtml($post->getPreview()); ?></h3>
+<h3><?php echo $this->escapeHtml($post->getViews()); ?> Views</h3>
+<h4><?php echo $this->escapeHtml($post->getPreview()); ?></h4>
 <p><?php echo nl2br($this->escapeHtml($post->getBody())); ?></p>
