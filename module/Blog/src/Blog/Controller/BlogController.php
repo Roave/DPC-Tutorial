@@ -20,6 +20,11 @@ class BlogController extends AbstractActionController
 
     public function indexAction()
     {
-        return new ViewModel();
+        $posts = $this->postService->getLatestPosts(10);
+        return new ViewModel(
+            [
+                'posts' => $posts
+            ]
+        );
     }
 }
