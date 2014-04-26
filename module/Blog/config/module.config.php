@@ -39,6 +39,36 @@ return array(
                         'action' => 'index',
                     ],
                 ],
+                'may_terminate' => 'true',
+                'child_routes' => [
+                    'add-post' => [
+                        'type' => 'Literal',
+                        'options' => [
+                            'route' => '/add',
+                            'defaults' => [
+                                'action' => 'add',
+                            ],
+                        ],
+                    ],
+                    'edit-post' => [
+                        'type' => 'Segment',
+                        'options' => [
+                            'route' => '/edit/:post-id',
+                            'defaults' => [
+                                'action' => 'edit',
+                            ],
+                        ],
+                    ],
+                    'delete-post' => [
+                        'type' => 'Segment',
+                        'options' => [
+                            'route' => '/delete',
+                            'defaults' => [
+                                'action' => 'delete',
+                            ],
+                        ],
+                    ],
+                ],
             ],
         ),
     ),

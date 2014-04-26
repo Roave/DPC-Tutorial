@@ -8,8 +8,8 @@
 <?php foreach ($posts as $post): ?>
     <hr/>
     <a href="<?php echo $this->url('post', ['slug' => $post->getSlug()]); ?>">
-        <h1><?php echo $post->getTitle(); ?></h1>
+        <h1><?php echo $this->escapeHtml($post->getTitle()); ?></h1>
     </a>
-    <h3><?php echo $post->getWrittenOn(); ?></h3>
-    <p><?php echo $post->getPreview(); ?></p>
+    <h3><?php echo $this->escapeHtml($post->getWrittenOn()); ?></h3>
+    <p><?php echo $this->escapeHtml($post->getPreview()); ?></p>
 <?php endforeach; ?>
