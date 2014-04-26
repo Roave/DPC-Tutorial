@@ -26,6 +26,6 @@ class AdminController extends AbstractActionController
     public function indexAction()
     {
         $posts = $this->postService->getLatestPosts(100);
-        return new ViewModel();
+        return new ViewModel(['posts' => $posts]);
     }
 } 

@@ -1,1 +1,56 @@
 <?php
+/** @var \Blog\Entity\Post[] $posts */
+?>
+
+<h1>Admin</h1>
+
+<div class="row">
+    <div class="col-md-10"><h3>Posts</h3></div>
+
+    <div class="col-md-2"><a href="" class="btn btn-default">Add New Post</a></div>
+</div>
+<hr />
+<div class="row">
+    <div class="col-md-1">
+        <h3><small>Id</small></h3>
+    </div>
+    <div class="col-md-2">
+        <h3><small>Date</small></h3>
+    </div>
+    <div class="col-md-4">
+        <h3><small>Title</small></h3>
+    </div>
+    <div class="col-md-2">
+        <h3><small>Slug</small></h3>
+    </div>
+    <div class="col-md-1">
+        <h3><small>Views</small></h3>
+    </div>
+</div>
+<hr />
+<?php foreach ($posts as $post): ?>
+<div class="row">
+    <div class="col-md-1">
+        <?php echo $post->getId(); ?>
+    </div>
+    <div class="col-md-2">
+        <?php echo $post->getWrittenOn(); ?>
+    </div>
+    <div class="col-md-4">
+        <?php echo $post->getTitle(); ?>
+    </div>
+    <div class="col-md-2">
+        <?php echo $post->getSlug(); ?>
+    </div>
+    <div class="col-md-1">
+        <?php echo $post->getViews(); ?>
+    </div>
+    <div class="col-md-1">
+        edit
+    </div>
+    <div class="col-md-1">
+        delete
+    </div>
+</div>
+<hr />
+<?php endforeach;
