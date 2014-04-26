@@ -62,7 +62,7 @@ return array(
                     'delete-post' => [
                         'type' => 'Segment',
                         'options' => [
-                            'route' => '/delete',
+                            'route' => '/delete/:post-id',
                             'defaults' => [
                                 'action' => 'delete',
                             ],

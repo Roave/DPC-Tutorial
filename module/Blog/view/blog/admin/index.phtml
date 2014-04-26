@@ -7,7 +7,7 @@
 <div class="row">
     <div class="col-md-10"><h3>Posts</h3></div>
 
-    <div class="col-md-2"><a href="" class="btn btn-default">Add New Post</a></div>
+    <div class="col-md-2"><a href="<?php echo $this->url('admin/add-post'); ?>" class="btn btn-default">Add New Post</a></div>
 </div>
 <hr />
 <div class="row">
@@ -46,10 +46,10 @@
         <?php echo $post->getViews(); ?>
     </div>
     <div class="col-md-1">
-        edit
+        <a href="<?php echo $this->url('admin/edit-post', ['post-id' => $post->getId()]); ?>">edit</a>
     </div>
     <div class="col-md-1">
-        delete
+        <a href="<?php echo $this->url('admin/delete-post', ['post-id' => $post->getId()]); ?>">delete</a>
     </div>
 </div>
 <hr />

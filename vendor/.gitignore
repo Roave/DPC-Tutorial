@@ -3,4 +3,4 @@
 composer
 zendframework
 autoload.php
-data/roave_developer_tools
+data/roave_developer_tools/*
