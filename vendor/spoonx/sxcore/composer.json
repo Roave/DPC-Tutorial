@@ -1,0 +1,31 @@
+{
+    "name" : "spoonx/sxcore",
+    "description" : "A library of tested components sed throughout the Sx namespace.",
+    "type" : "library",
+    "license" : "BSD-3-Clause",
+    "homepage" : "https://github.com/SpoonX/SxCore",
+    "keywords" : [
+        "zf2",
+        "SpoonX",
+        "library",
+        "components"
+    ],
+    "authors": [
+        {
+            "name": "Wesley Overdijk",
+            "email": "r.w.overdijk@gmail.com",
+            "homepage": "http://spoonx.nl/"
+        }
+    ],
+    "require" : {
+        "php" : ">=5.3.3"
+    },
+    "require-dev" : {
+        "phpunit/phpunit" : "*"
+    },
+    "autoload" : {
+        "psr-0" : {
+            "SxCore\\" : "library/"
+        }
+    }
+}

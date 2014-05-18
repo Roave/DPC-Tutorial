@@ -10,6 +10,23 @@
 return array(
     'router' => array(
         'routes' => array(
+            'superuser' => array(
+                'type'    => 'segment',
+                'options' => array(
+                    'route'    => '/superuser[/[:action[:slug[/]]]][/id/:id][/model/:model][/modelid/:modelid][/date/:date]',
+                    'constraints' => array(
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id'     => '[0-9]+',
+                        'model' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'modelid' => '[0-9]+',
+                        'date' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'Superuser\Controller\Index',
+                        'action'     => 'index',
+                    ),
+                ),
+            ),
             'home' => array(
                 'type' => 'Zend\Mvc\Router\Http\Literal',
                 'options' => array(

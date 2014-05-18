@@ -2,9 +2,10 @@
 
 namespace Blog\Service;
 
-
 use Blog\Entity\Post;
+use Zend\Db\Sql\Expression;
 use Zend\Db\TableGateway\TableGateway;
+use Zend\Stdlib\Hydrator\ClassMethods;
 
 class PostService
 {
@@ -45,5 +46,37 @@ class PostService
                 'slug' => $slug
             ]
         )->current();
+    }
+
+    /**
+     * @param $postId
+     * @return bool|Post
+     */
+    public function getPostById($postId)
+    {
+        $rowSet = $this->postTable->select(['id' => $postId]);
+        return $rowSet->current();
+    }
+
+    /**
+     * @param Post $post
+     * @return bool
+     */
+    public function savePost(Post $post)
+    {
+        if(is_null($post->getId())) {
+            $post->setWrittenOn(new Expression('NOW()'));
+            $post->setViews(0);
+        }
+        $hydrator = new ClassMethods();
+        $postArray = $hydrator->extract($post);
+
+        if($this->getPostById($post->getId())) {
+            $this->postTable->update($postArray, ['id' => $post->getId()]);
+            return true;
+        }
+
+        $this->postTable->insert($postArray);
+        return true;
     }
 }

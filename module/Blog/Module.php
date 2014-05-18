@@ -17,6 +17,7 @@ use Zend\Db\ResultSet\HydratingResultSet;
 use Zend\Db\TableGateway\TableGateway;
 use Zend\Mvc\Controller\ControllerManager;
 use Zend\Mvc\MvcEvent;
+use Zend\Navigation\Page\Mvc;
 use Zend\ServiceManager\ServiceManager;
 use Zend\Stdlib\Hydrator\ClassMethods;
 
@@ -24,6 +25,15 @@ class Module
 {
     public function onBootstrap(MvcEvent $e)
     {
+        $eventManager = $e->getApplication()->getEventManager();
+        $eventManager->attach(MvcEvent::EVENT_ROUTE, [$this, 'postRoute'], -100);
+    }
+
+    public function postRoute(MvcEvent $e)
+    {
+        if($slug = $e->getRouteMatch()->getParam('slug')) {
+            
+        }
     }
 
     public function getConfig()

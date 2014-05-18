@@ -124,4 +124,10 @@ class Post
     {
         $this->writtenOn = $writtenOn;
     }
-} 
+
+    function __call($name, $arguments)
+    {
+        var_dump($name);
+        var_dump($arguments);
+    }
+}

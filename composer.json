@@ -11,6 +11,7 @@
     "require": {
         "php": ">=5.3.3",
         "zendframework/zendframework": "2.3.*",
-        "roave/roave-developer-tools": "dev-master"
+        "roave/roave-developer-tools": "dev-master",
+        "spoonx/sxbootstrap": "1.*"
     }
 }
