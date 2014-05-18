@@ -32,7 +32,9 @@ class Module
     public function postRoute(MvcEvent $e)
     {
         if($slug = $e->getRouteMatch()->getParam('slug')) {
-            
+            /** @var PostService $postService */
+            $postService = $e->getApplication()->getServiceManager()->get('Blog\Service\PostService');
+            $postService->incrementViewBySlug($slug);
         }
     }
 

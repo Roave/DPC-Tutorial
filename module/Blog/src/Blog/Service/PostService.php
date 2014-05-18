@@ -37,7 +37,7 @@ class PostService
 
     /**
      * @param $slug
-     * @return array|\ArrayObject|null
+     * @return Post
      */
     public function getPostBySlug($slug)
     {
@@ -78,5 +78,14 @@ class PostService
 
         $this->postTable->insert($postArray);
         return true;
+    }
+
+    public function incrementViewBySlug($slug)
+    {
+        if(!$post = $this->getPostBySlug($slug)) {
+            throw new \InvalidArgumentException('Post not found');
+        }
+        $post->setViews($post->getViews() + 1);
+        $this->savePost($post);
     }
 }
